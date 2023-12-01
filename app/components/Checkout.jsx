@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Checkout = ({product}) => {
+const Checkout = ({product, setProductId}) => {
   const [quantity, setQuantity] = useState(1)
 
   const decreaseQuantity = () => {
@@ -12,6 +12,7 @@ const Checkout = ({product}) => {
   };
 
   const checkout = async () => {
+    setProductId(product.id)
     const data = {
       id: product.id,
       productName: product.title,

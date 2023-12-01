@@ -1,25 +1,33 @@
 'use client'
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { IProduct } from "../types/main"
 import Checkout from "./Checkout"
 
 const MovieCard = ({product}: {product: IProduct}) => {
+  const [productId, setProductId] = useState(0)
+
+  function handleId (id: number) {
+    setProductId(id)
+  }
+
   useEffect(() => {
-    const srcSnap ="https://app.sandbox.midtrans.com/snap/snap.js"
-    const clientKey = process.env.NEXT_PUBLIC_CLIENT || ''
-    const script = document.createElement("script")
-
-    script.src = srcSnap
-    script.setAttribute('data-client-key', clientKey)
-    script.async = true
-
-    document.body.appendChild(script)
-
-    return () => {
-      document.body.removeChild(script)
+    if(productId === product.id) {
+      const srcSnap ="https://app.sandbox.midtrans.com/snap/snap.js"
+      const clientKey = process.env.NEXT_PUBLIC_CLIENT || ''
+      const script = document.createElement("script")
+  
+      script.src = srcSnap
+      script.setAttribute('data-client-key', clientKey)
+      script.async = true
+  
+      document.body.appendChild(script)
+  
+      return () => {
+        document.body.removeChild(script)
+      }
     }
-  }, []);
+  }, [productId]);
 
   return (
     <div
@@ -36,7 +44,7 @@ const MovieCard = ({product}: {product: IProduct}) => {
         <p>Stock: {product.stock}</p>
       </div>
       <div className="absolute bottom-0 right-0 w-full px-4">
-        <Checkout product={product} />
+        <Checkout product={product} setProductId={handleId} />
       </div>
     </div>
   )
