@@ -5,7 +5,7 @@ export const useMain = () => {
   return useQuery({
     queryKey: ['products'],
     queryFn: async () => {
-      const dataRes = await axios.get('/api/products')
+      const dataRes = await axios.get('/base/products')
       return dataRes.data.products
     },
   })
