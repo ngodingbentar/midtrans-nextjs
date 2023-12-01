@@ -19,7 +19,7 @@ const Checkout = ({product}) => {
       quantity,
     }
 
-    const response = await fetch("https://ngodingbentar-be-v3.vercel.app/api/v1/midtrans-token", {
+    const response = await fetch("be/midtrans-token", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

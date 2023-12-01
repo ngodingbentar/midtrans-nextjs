@@ -6,7 +6,6 @@ import Checkout from "./Checkout"
 
 const MovieCard = ({product}: {product: IProduct}) => {
   useEffect(() => {
-    // render midtrans snap token
     const srcSnap ="https://app.sandbox.midtrans.com/snap/snap.js"
     const clientKey = process.env.NEXT_PUBLIC_CLIENT || ''
     const script = document.createElement("script")
