@@ -8,7 +8,6 @@ const HomePage = () => {
   const dispatch = useDispatch()
   const count = useSelector((state: IMain) => state.main.count)
   const {data, isLoading} = useMain()
-  console.log('data', data)
 
   const hanldeClick = (type: string) => {
     dispatch({ type: `main/${type}` })
@@ -16,11 +15,6 @@ const HomePage = () => {
 
   return (
     <>
-      {/* <div className='flex flex-col w-screen h-screen justify-center items-center '>
-        {!isLoading && data && data.map((item: IProduct) => (
-          <div key={item.id}>{item.title}</div>
-        ))}
-      </div> */}
       <div className='p-8'>
         <div>
           <div className="min-h-screen">

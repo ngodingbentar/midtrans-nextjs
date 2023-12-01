@@ -1,12 +1,30 @@
 'use client'
 
+import { useEffect } from "react"
 import { IProduct } from "../types/main"
+import Checkout from "./Checkout"
 
 const MovieCard = ({product}: {product: IProduct}) => {
+  useEffect(() => {
+    // render midtrans snap token
+    const srcSnap ="https://app.sandbox.midtrans.com/snap/snap.js"
+    const clientKey = process.env.NEXT_PUBLIC_CLIENT || ''
+    const script = document.createElement("script")
+
+    script.src = srcSnap
+    script.setAttribute('data-client-key', clientKey)
+    script.async = true
+
+    document.body.appendChild(script)
+
+    return () => {
+      document.body.removeChild(script)
+    }
+  }, []);
 
   return (
     <div
-      className="bg-white shadow-lg rounded-xl overflow-hidden max-w-xs order-first lg:order-none h-[400px] relative">
+      className="bg-white shadow-lg rounded-xl overflow-hidden max-w-xs order-first lg:order-none h-[450px] relative">
       <div>
         <img src={product.thumbnail} alt={product.title} className="w-full h-48 object-cover" />
       </div>
@@ -18,8 +36,8 @@ const MovieCard = ({product}: {product: IProduct}) => {
         </div>
         <p>Stock: {product.stock}</p>
       </div>
-      <div className="absolute bottom-0 right-0">
-        <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add to Cart</button>
+      <div className="absolute bottom-0 right-0 w-full px-4">
+        <Checkout product={product} />
       </div>
     </div>
   )
