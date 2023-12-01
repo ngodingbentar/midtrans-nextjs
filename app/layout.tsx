@@ -2,6 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import ReduxProvider from '@/app/store/provider'
 import { ProvidersReactQuery } from './providersReactQuery'
+import Header from './components/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ProvidersReactQuery>
           <ReduxProvider>
+            <Header />
             {children}
           </ReduxProvider>
         </ProvidersReactQuery>

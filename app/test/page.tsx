@@ -1,12 +1,13 @@
 'use client'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { IMain } from '../types/main'
+import { IMain, IProduct } from '../types/main'
 import { useMain } from '../hooks/useMain'
 const TestPage = () => {
   const dispatch = useDispatch()
   const count = useSelector((state: IMain) => state.main.count)
   const {data, isLoading} = useMain()
+  console.log('data', data)
 
   const hanldeClick = (type: string) => {
     dispatch({ type: `main/${type}` })
@@ -19,12 +20,9 @@ const TestPage = () => {
         <button onClick={() => hanldeClick('plus')}>+</button>
         <button onClick={() => hanldeClick('minus')} className='ml-4'>-</button>
       </div>
-      {(!isLoading && data) && (
-        <div className='mt-4'>
-          <div>id: {data.id}</div>
-          <div>title: {data.title}</div>
-        </div>
-      )}
+      {!isLoading && data && data.map((item: IProduct) => (
+        <div key={item.id}>{item.title}</div>
+      ))}
     </div>
   )
 }

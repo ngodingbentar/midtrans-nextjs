@@ -3,10 +3,10 @@ import { useQuery } from "react-query"
 
 export const useMain = () => {
   return useQuery({
-    queryKey: ['todos'],
+    queryKey: ['products'],
     queryFn: async () => {
-      const userRes = await axios.get('/api/todos/1')
-      return userRes.data
+      const dataRes = await axios.get('/api/products')
+      return dataRes.data.products
     },
   })
 }
