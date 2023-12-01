@@ -1,6 +1,0 @@
-{
-  "rewrites": [
-      { "source": "/base/:path(.*)", "destination": "https://dummyjson.com/:path" },
-      { "source": "/(.*)", "destination": "/" }
-  ]
-}

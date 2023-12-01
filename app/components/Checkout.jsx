@@ -20,6 +20,9 @@ const Checkout = ({product, setProductId}) => {
       quantity,
     }
 
+    // you can also get the token value by using code in .archived/api/token, then move it to app/
+    // const response = await fetch("/api/token", {
+
     const response = await fetch("be/midtrans-token", {
       method: "POST",
       headers: {
