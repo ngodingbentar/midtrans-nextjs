@@ -19,7 +19,7 @@ const Checkout = ({product}) => {
       quantity,
     }
 
-    const response = await fetch("/api/token", {
+    const response = await fetch("/be/midtrans-token", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

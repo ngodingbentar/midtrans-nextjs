@@ -1,13 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const midtransClient = require('midtrans-client');
-// Create Core API instance
-let coreApi = new midtransClient.CoreApi({
-    isProduction : false,
-    serverKey : 'YOUR_SERVER_KEY',
-    clientKey : 'YOUR_CLIENT_KEY'
-});
-
+const midtransClient = require('midtrans-client')
 let snap = new midtransClient.Snap({
   isProduction: false,
   serverKey: process.env.NEXT_PUBLIC_SECRET,
