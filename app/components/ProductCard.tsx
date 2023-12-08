@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { IProduct } from "../types/main"
 import Checkout from "./Checkout"
 
-const MovieCard = ({product}: {product: IProduct}) => {
+const ProductCard = ({product}: {product: IProduct}) => {
   const [productId, setProductId] = useState(0)
 
   function handleId (id: number) {
@@ -50,4 +50,4 @@ const MovieCard = ({product}: {product: IProduct}) => {
   )
 }
 
-export default MovieCard
+export default ProductCard
